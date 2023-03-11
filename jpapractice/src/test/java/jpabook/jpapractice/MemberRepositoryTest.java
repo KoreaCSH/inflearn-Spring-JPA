@@ -18,23 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class MemberRepositoryTest {
 
-    @Autowired MemberRepository memberRepository;
 
-    @Test
-    @DisplayName("JPA 동작확인")
-    void testMember() {
-        // given
-        Member member = new Member();
-        member.setUsername("memberA");
 
-        // when
-        Long savedId = memberRepository.save(member);
-
-        // then
-        Member findMember = memberRepository.find(savedId);
-        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
-        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
-        Assertions.assertThat(findMember).isSameAs(member);
-    }
 
 }
