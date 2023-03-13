@@ -1,6 +1,7 @@
 package jpabook.jpapractice.domain.item;
 
 import jpabook.jpapractice.domain.Category;
+import jpabook.jpapractice.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,5 +27,19 @@ public abstract class Item {
     // 원래 manytomany는 사용하지 않는 것이 좋다. db 이론처럼 새로운 테이블을 만드는 것이 정석. 하지만 만약 사용한다면 JoinTable을 사용해야 한다.
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+    // -- 비즈니스 로직 -- Entity 자체가 해결할 수 있는 것은 Entity 에서 구현하도록 하자.
+    // 재고 수량 증가 로직
+    public void addStock(int quantity) {
+        this.stockQuantity += quantity;
+    }
+
+    public void removeStock(int quantity) {
+        int restStock = this.stockQuantity - quantity;
+        if(restStock < 0) {
+            throw new NotEnoughStockException("need more stock");
+        }
+        this.stockQuantity = restStock;
+    }
 
 }

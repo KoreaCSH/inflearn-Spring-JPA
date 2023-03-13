@@ -1,6 +1,7 @@
-package jpabook.jpapractice.repository;
+package jpabook.jpapractice.service;
 
 import jpabook.jpapractice.domain.Member;
+import jpabook.jpapractice.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

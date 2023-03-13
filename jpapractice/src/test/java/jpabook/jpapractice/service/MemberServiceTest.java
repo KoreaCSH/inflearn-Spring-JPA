@@ -2,7 +2,6 @@ package jpabook.jpapractice.service;
 
 import jpabook.jpapractice.domain.Member;
 import jpabook.jpapractice.repository.MemberRepository;
-import jpabook.jpapractice.repository.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
