@@ -44,4 +44,12 @@ public class MemberService {
         return memberRepository.findOne(memberId);
     }
 
+    public boolean checkDuplicateMemberName(String name) {
+        List<Member> findMembers = memberRepository.findByName(name);
+        if(!findMembers.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
 }

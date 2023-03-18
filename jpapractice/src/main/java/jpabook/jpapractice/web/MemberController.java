@@ -30,6 +30,10 @@ public class MemberController {
 
         // Validator interface 는 Errors 와 연결되고, @Valid 는 BindingResult(Errors 를 상속받은 인터페이스) 와 연결되는구나
 
+        if (memberService.checkDuplicateMemberName(memberForm.getName())) {
+            result.rejectValue("name", "duplicate", "이미 가입된 이름입니다.");
+        }
+
         if(result.hasErrors()) {
             return "members/createMemberForm";
         }
