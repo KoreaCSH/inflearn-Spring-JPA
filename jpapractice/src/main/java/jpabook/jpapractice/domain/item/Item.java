@@ -15,8 +15,9 @@ import java.util.List;
 @Getter @Setter
 public abstract class Item {
 
+    // JPA 에서 Auto_increment 이슈를 해결하려면 GenerationType.IDENTITY 로 설정해야 한다.
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id")
     private Long id;
 
