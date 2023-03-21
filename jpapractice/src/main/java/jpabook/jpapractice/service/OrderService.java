@@ -8,9 +8,12 @@ import jpabook.jpapractice.domain.item.Item;
 import jpabook.jpapractice.repository.ItemRepository;
 import jpabook.jpapractice.repository.MemberRepository;
 import jpabook.jpapractice.repository.OrderRepository;
+import jpabook.jpapractice.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -52,10 +55,13 @@ public class OrderService {
     /*
     * 취소
      */
+    @Transactional
     public void cancelOrder(Long orderId) {
         // 취소할 주문 조회
-        Order order = orderRepository.findOne(orderId).
-                orElseThrow(() -> new IllegalStateException("없는 주문입니다."));
+//        Order order = orderRepository.findOne(orderId).
+//                orElseThrow(() -> new IllegalStateException("없는 주문입니다."));
+
+        Order order = orderRepository.findOne(orderId).get();
 
         // 주문 취소 로직은 delete 문을 날리는 것이 아니라 status 를 cancel 로 변경하는 것이다.
         // 취소된 주문 기록도 남겨야하므로.
@@ -63,8 +69,8 @@ public class OrderService {
     }
 
     // 검색
-//    public List<Order> findOrders(OrderSearch orderSearch) {
-//        return orderRepository.findAll(orderSearch);
-//    }
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAll(orderSearch);
+    }
 
 }

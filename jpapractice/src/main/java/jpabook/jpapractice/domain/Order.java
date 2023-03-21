@@ -34,7 +34,7 @@ public class Order {
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status; // 주문상태 [ Order, Cancle ]
+    private OrderStatus status; // 주문상태 [ Order, Cancel ]
 
     // -- 연관관계 편의 메서드 --
     // 양방향 관계일 때 사용하면 편하다. 메서드 하나로 해결 가능
