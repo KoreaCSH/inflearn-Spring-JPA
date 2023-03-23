@@ -22,7 +22,7 @@ public class Member {
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "member") // mappedBy = "order" 연관관계의 주인은 order 이다. 이것은 읽기 전용이 되는 것.
-    private List<Order> orders = new ArrayList<>();
+//    @OneToMany(mappedBy = "member") // mappedBy = "order" 연관관계의 주인은 order 이다. 이것은 읽기 전용이 되는 것.
+//    private List<Order> orders = new ArrayList<>();
 
 }

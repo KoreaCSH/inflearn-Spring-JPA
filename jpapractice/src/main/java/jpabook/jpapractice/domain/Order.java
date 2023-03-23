@@ -40,7 +40,7 @@ public class Order {
     // 양방향 관계일 때 사용하면 편하다. 메서드 하나로 해결 가능
     public void setMember(Member member) {
         this.member = member;
-        member.getOrders().add(this);
+//        member.getOrders().add(this);
     }
 
     public void addOrderItem(OrderItem orderItem) {

@@ -27,6 +27,13 @@ public class MemberService {
         return member.getId();
     }
 
+    @Transactional
+    public Long update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
+        return member.getId();
+    }
+
     // 최후 테스트를 위해 name을 unique key로 설정하는 것이 좋음.
     private void validateDuplicateMember(Member member) {
         List<Member> findMembers = memberRepository.findByName(member.getName());
