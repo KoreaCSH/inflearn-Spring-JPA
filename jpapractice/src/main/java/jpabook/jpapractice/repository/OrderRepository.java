@@ -66,12 +66,4 @@ public class OrderRepository {
         ).getResultList();
     }
 
-    public List<OrderSimpleQueryDto> findOrderDtos() {
-        return em.createQuery(
-                        "select o from Order o " +
-                                " join o.member m" +
-                                " join o.delivery d", OrderSimpleQueryDto.class)
-                .getResultList();
-
-    }
 }
